@@ -1,0 +1,9 @@
+# Skip ngrok browser warning
+<IfModule mod_headers.c>
+    Header set ngrok-skip-browser-warning "true"
+</IfModule>
+
+# Enable URL rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+</IfModule>

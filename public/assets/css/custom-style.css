@@ -1,0 +1,306 @@
+/* University Attendance System - Modern & Clean Styles */
+
+/* ----------------------------------------------------------- */
+/* 1. Base Layout */
+/* ----------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+#wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* ----------------------------------------------------------- */
+/* 2. Sidebar - VISIBLE by default on Desktop */
+/* ----------------------------------------------------------- */
+#sidebar {
+    width: 250px;
+    min-width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+    color: #ecf0f1;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    padding: 20px 15px;
+    background: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header h3 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.sidebar-header i {
+    margin-right: 8px;
+    color: #f39c12;
+}
+
+/* Sidebar Navigation */
+.list-unstyled.components {
+    padding: 15px 0;
+    list-style: none;
+    margin: 0;
+}
+
+.list-unstyled.components li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.list-unstyled.components a {
+    display: block;
+    padding: 14px 20px;
+    text-decoration: none;
+    color: #ecf0f1;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.list-unstyled.components a i {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.list-unstyled.components li.active>a {
+    background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+    color: #ffffff;
+    border-left: 4px solid #f39c12;
+    font-weight: 600;
+}
+
+.list-unstyled.components a:hover {
+    background-color: rgba(52, 152, 219, 0.2);
+    color: #ffffff;
+    padding-left: 25px;
+}
+
+/* Custom Scrollbar */
+#sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+/* ----------------------------------------------------------- */
+/* 3. Content Area - Adjusts to sidebar */
+/* ----------------------------------------------------------- */
+#content {
+    flex: 1;
+    margin-left: 250px;
+    /* Same as sidebar width */
+    padding: 25px;
+    padding-top: 80px;
+    /* Space for navbar */
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease-in-out;
+}
+
+/* ----------------------------------------------------------- */
+/* 4. TOGGLED State - Hide Sidebar, Expand Content */
+/* ----------------------------------------------------------- */
+#wrapper.toggled #sidebar {
+    margin-left: -250px;
+    /* Hide sidebar off-screen */
+}
+
+#wrapper.toggled #content {
+    margin-left: 0;
+    /* Content takes full width */
+}
+
+/* ----------------------------------------------------------- */
+/* 5. Mobile Responsive */
+/* ----------------------------------------------------------- */
+@media (max-width: 768px) {
+
+    /* On mobile, hide sidebar by default */
+    #sidebar {
+        margin-left: -250px;
+    }
+
+    #content {
+        margin-left: 0;
+        padding: 15px;
+        padding-top: 70px;
+    }
+
+    /* When toggled on mobile, SHOW sidebar */
+    #wrapper.toggled #sidebar {
+        margin-left: 0;
+        box-shadow: 3px 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Add dark overlay on mobile when sidebar is open */
+    #wrapper.toggled::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 999;
+        animation: fadeIn 0.3s;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ----------------------------------------------------------- */
+/* 6. Hamburger Button */
+/* ----------------------------------------------------------- */
+#sidebarCollapse {
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#sidebarCollapse:hover {
+    transform: scale(1.05);
+    background-color: #0d6efd !important;
+    box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+}
+
+/* ----------------------------------------------------------- */
+/* 7. Card & UI Enhancements */
+/* ----------------------------------------------------------- */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+    font-weight: 600;
+    padding: 15px 20px;
+}
+
+.table {
+    font-size: 0.9rem;
+}
+
+.badge {
+    font-weight: 500;
+    padding: 6px 12px;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+/* ----------------------------------------------------------- */
+/* 8. Modal Styles */
+/* ----------------------------------------------------------- */
+
+.modal {
+    z-index: 1055;
+}
+
+.modal-backdrop {
+    z-index: 1050;
+}
+
+.modal-dialog {
+    margin: 1.75rem auto;
+}
+
+.modal-content {
+    border-radius: 8px;
+}
+
+/* Ensure modals work properly with sidebar */
+.modal-open #sidebar {
+    z-index: 1040;
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+    padding-right: 0 !important;
+}
+
+.modal-open .navbar,
+.modal-open #sidebar {
+    padding-right: 0 !important;
+}
+
+
+/* ----------------------------------------------------------- */
+/* 9. Modal Backdrop Fix - Force Cleanup */
+/* ----------------------------------------------------------- */
+
+/* Ensure backdrop is always removable */
+.modal-backdrop.fade {
+    opacity: 0.5;
+}
+
+.modal-backdrop.show {
+    opacity: 0.5;
+}
+
+/* When modal is hidden, ensure no backdrop remains */
+.modal:not(.show) ~ .modal-backdrop {
+    display: none !important;
+}
+
+/* Force body to be scrollable when no modal is shown */
+body:not(.modal-open) {
+    overflow: auto !important;
+    padding-right: 0 !important;
+}
+
+/* Ensure modal closes properly */
+.modal.fade:not(.show) {
+    display: none;
+}
